@@ -9,6 +9,7 @@ const atoms = path.resolve(__dirname, 'src/atoms');
 
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr()],
+  base: '/wedding-app.github.io/',
   resolve: {
     alias: {
       '@': root,
