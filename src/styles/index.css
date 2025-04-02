@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "./reset.css";
+
+@font-face {
+  font-family: 'NewYorker';
+  src: url('/src/assets/fonts/New-YorkerC.ttf') format('woff'),
+  url('/src/assets/fonts/New-YorkerC.ttf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'NewYorker', sans-serif;
+  background: #EFD4D8;
+  text-transform: uppercase;
+}
+
+@theme {
+  --color-primary: #EFD4D8;
+  --color-secondary: #C06576;
+  --breakpoint-lg: 768px;
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 480px;
+  --breakpoint-xl: 1440px;
+
+  --text-3xl: 32px;
+  --text-body: 16px;
+
+}
