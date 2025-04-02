@@ -29,7 +29,7 @@ export const Invite = ({ scrollToNext }: InviteProps) => {
           день вместе с нами!
         </Typography>
         <SvgIcon
-          className="flex justify-center w-[106px] h-[132px] lg:w-[95px] lg:h-[76px]"
+          className="flex justify-center lg:w-[221px] lg:h-[160px] w-[95px] h-[76px]"
           Icon={Bear}
         />
       </div>

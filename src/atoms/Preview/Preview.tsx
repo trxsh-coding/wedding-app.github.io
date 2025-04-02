@@ -1,4 +1,4 @@
-import Bg from '@/assets/images/bg.png';
+import Bg from '@/assets/images/bg.webp';
 import { Container } from '@/atoms/Container';
 import { Typography } from '@/components/Typography';
 

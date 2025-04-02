@@ -5,6 +5,7 @@ import { Input } from '@/components/Input/Input';
 import { Radio } from '@/components/Radio';
 import { Typography } from '@/components/Typography';
 import { useBreakpoints } from '@/hooks/useBreakpoints';
+import mergeClassname from '@/utils/merge';
 import emailjs from 'emailjs-com';
 import React from 'react';
 
@@ -15,6 +16,7 @@ interface FormProps {
 const drinksList = ['Игристое вино', 'Белое вино', 'Красное вино', 'Водка', 'Виски/Ром', 'Коньяк'];
 const attendanceOptions = ['Приду', 'Не смогу прийти'];
 const transferOptions = ['Да', 'Нет'];
+const kidsOptions = ['Да', 'Нет'];
 
 const serviceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
 const templateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
@@ -26,6 +28,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
   const [attendance, setAttendance] = React.useState<string | null>(null);
   const [transfer, setTransfer] = React.useState<string | null>(null);
   const [kidsInfo, setKidsInfo] = React.useState('');
+  const [withKids, setWithKids] = React.useState(transferOptions[1]);
 
   const { isDesktop } = useBreakpoints();
 
@@ -111,10 +114,26 @@ export const Form = ({ scrollToNext }: FormProps) => {
 
         {/* Дети */}
         <div className="flex flex-col">
-          <Typography view="form">Будете ли вы с детьми?</Typography>
-          <Typography view="form">Если да, укажите количество:</Typography>
+          <FormWrapper caption="Будете ли вы с детьми?">
+            {kidsOptions.map((option) => (
+              <Radio
+                key={option}
+                title={option}
+                value={withKids === option}
+                onChange={() => setWithKids(option)}
+              />
+            ))}
+          </FormWrapper>
         </div>
-        <Input placeholder="Возраст детей" value={kidsInfo} onChange={setKidsInfo} />
+        <div
+          className={mergeClassname(
+            withKids === kidsOptions[0] ? 'h-auto' : 'h-0',
+            'transition-all duration-300 ease-linear overflow-hidden'
+          )}
+        >
+          <Typography view="form">Укажите количество:</Typography>
+          <Input placeholder="Возраст детей" value={kidsInfo} onChange={setKidsInfo} />
+        </div>
       </div>
       <Button title="Отправить" onClick={handleEmailSubmit} />
     </Container>

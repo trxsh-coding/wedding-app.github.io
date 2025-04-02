@@ -1,5 +1,6 @@
 import { Invite } from '@/atoms/Invite';
 import { Location } from '@/atoms/Location';
+import { MusicPlayer } from '@/atoms/MusicPlayer/MusicPlayer';
 import { Present } from '@/atoms/Present';
 import { Preview } from '@/atoms/Preview';
 import { Rest } from '@/atoms/Rest';
@@ -45,6 +46,7 @@ function App() {
       <Present scrollToNext={scrollToNext} />
       <Form scrollToNext={scrollToNext} />
       <Timer />
+      <MusicPlayer />
     </div>
   );
 }

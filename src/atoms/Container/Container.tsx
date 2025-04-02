@@ -8,6 +8,7 @@ import { SvgIcon } from '@/components/Icon/SvgIcon';
 import { Typography } from '@/components/Typography';
 import { useBreakpoints } from '@/hooks/useBreakpoints';
 import mergeClassname from '@/utils/merge';
+import { motion } from 'framer-motion';
 
 interface ContainerProps {
   children: React.ReactNode;
@@ -46,13 +47,19 @@ export const Container = ({
         className
       )}
     >
-      <div className="flex flex-col justify-center items-center grow w-full">
+      <motion.div
+        className="flex flex-col justify-center items-center grow w-full"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
         <div className="flex grow-0">
           {withBow && (
             <SvgIcon Icon={Bow} className="w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]" />
           )}
           {title && (
-            <Typography view="heading" className={mergeClassname(titleClassname, 'uppercase')}>
+            <Typography view="heading1" className={mergeClassname(titleClassname, 'uppercase')}>
               {title}
             </Typography>
           )}
@@ -68,7 +75,7 @@ export const Container = ({
         >
           {children}
         </div>
-      </div>
+      </motion.div>
       <div
         className={mergeClassname(
           'flex-col w-full flex cursor-pointer',
@@ -79,8 +86,9 @@ export const Container = ({
           <SvgIcon
             className={mergeClassname(
               !isLeftArrow ? 'justify-end' : 'justify-start',
-              'flex w-[90px] h-[90px] '
+              'flex w-full'
             )}
+            iconClassName="flex w-[90px] h-[90px]"
             Icon={isLeftArrow ? ArrowLeft : ArrowRight}
             alt="Arrow"
             onClick={onArrowClick}
