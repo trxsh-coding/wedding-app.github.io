@@ -11,8 +11,8 @@ interface SvgImageProps {
 export const Icon = ({
   src,
   alt,
-  height = 32,
-  width = 32,
+  height,
+  width,
   className,
   IconClassName,
   onClick,
