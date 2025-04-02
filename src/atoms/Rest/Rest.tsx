@@ -24,7 +24,7 @@ export const Rest = ({ scrollToNext }: RestProps) => {
           забронировать коттедж заранее
         </Typography>
         <div className="w-full flex justify-center">
-          <Button title="бронирование" />
+          <Button onClick={() => null} title="бронирование" />
         </div>
       </div>
     </Container>

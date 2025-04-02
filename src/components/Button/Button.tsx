@@ -4,7 +4,7 @@ import mergeClassname from '@/utils/merge';
 interface ButtonProps {
   title: string;
   className?: string;
-  onClick: VoidFunction;
+  onClick?: VoidFunction;
 }
 export const Button = ({ title, onClick, className }: ButtonProps) => {
   return (
