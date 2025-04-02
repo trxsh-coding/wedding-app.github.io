@@ -73,8 +73,8 @@ export const Form = ({ scrollToNext }: FormProps) => {
       onArrowClick={scrollToNext}
       title="Анкета"
       withBow
-      className="lg:px-[30px] justify-start lg:justify-center"
-      childClassname="w-full gap-2"
+      className="lg:px-[30px] justify-start lg:justify-center w-full"
+      childClassname="w-full gap-2 w-full"
       withDivider={isDesktop}
     >
       <div className="p-2.5 gap-2 w-full flex flex-col lg:px-[32px] lg:py-2 lg:gap-3.5 rounded-[20px] bg-white border-solid border-black border">

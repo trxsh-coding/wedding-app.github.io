@@ -50,7 +50,7 @@ export const Container = ({
         className
       )}
     >
-      <div className="flex flex-col justify-center items-center grow">
+      <div className="flex flex-col justify-center items-center grow w-full">
         <div className="flex grow-0">
           {withBow && <Icon src={Bow} className="w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]" />}
           {title && (
