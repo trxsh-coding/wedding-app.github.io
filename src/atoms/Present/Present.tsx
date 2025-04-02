@@ -18,7 +18,7 @@ export const Present = ({ scrollToNext }: PresentProps) => {
       <Typography view="body">
         Приносите веселье в душе, радость в сердце, а подарки – в конверте!
       </Typography>
-      <SvgIcon Icon={Letter} />
+      <SvgIcon Icon={Letter} className="w-[79px] h-[62px] lg:w-[128px] lg:h-[101px]" />
     </Container>
   );
 };

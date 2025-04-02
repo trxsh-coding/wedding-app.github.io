@@ -22,7 +22,7 @@ export const Invite = ({ scrollToNext }: InviteProps) => {
 
   return (
     <Container onArrowClick={scrollToNext} childClassname="h-full">
-      <div className="flex flex-col text-center justify-center gap-4 lg:justify-evenly h-full">
+      <div className="flex flex-col items-center text-center justify-center gap-4 lg:justify-evenly h-full">
         <Typography view="heading1">{title}</Typography>
         <Typography view="body">
           Наша свадьба без вас не будет такой счастливой, уютной и веселой! Приглашаем отметить этот

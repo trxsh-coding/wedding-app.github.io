@@ -10,13 +10,18 @@ interface TimingProps {
 export const Timing = ({ scrollToNext }: TimingProps) => {
   return (
     <Container
-      className="flex gap-9"
+      className="flex lg:gap-9"
       titleClassname="text-center justify-start"
       childClassname="flex-col items-center justify-center"
       title="Расписание свадебного дня"
       onArrowClick={scrollToNext}
     >
-      <EventItem title="14:00" subtitle="венчание" Icon={Ring} />
+      <EventItem
+        iconClassName="w-[80px] h-[87px] lg:w-[94px] lg:h-[102px]"
+        title="14:00"
+        subtitle="венчание"
+        Icon={Ring}
+      />
       <EventItem
         title="16:00"
         subtitle="ресторан"

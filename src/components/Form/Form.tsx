@@ -12,15 +12,7 @@ interface FormProps {
   scrollToNext: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const drinksList = [
-  'Игристое вино',
-  'Белое вино',
-  'Красное вино',
-  'Водка/Коньяк',
-  'Виски/Ром',
-  'Безалкогольные напитки',
-];
-
+const drinksList = ['Игристое вино', 'Белое вино', 'Красное вино', 'Водка', 'Виски/Ром', 'Коньяк'];
 const attendanceOptions = ['Приду', 'Не смогу прийти'];
 const transferOptions = ['Да', 'Нет'];
 

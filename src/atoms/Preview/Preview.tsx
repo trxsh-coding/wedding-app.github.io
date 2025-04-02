@@ -1,3 +1,4 @@
+import Bg from '@/assets/images/bg.png';
 import { Container } from '@/atoms/Container';
 import { Typography } from '@/components/Typography';
 
@@ -10,12 +11,15 @@ export const Preview = ({ isDesktop, scrollToNext }: PreviewProps) => {
   return (
     <Container
       titleClassname="text-white"
-      withBg
       isLeftArrow
+      childClassname="h-full w-full"
       withDivider={isDesktop}
       onArrowClick={scrollToNext}
     >
-      <div className="flex flex-col justify-center items-center">
+      <div
+        className="bg-contain bg-center h-full w-full bg-no-repeat flex flex-col justify-center items-center"
+        style={{ backgroundImage: `url(${Bg})` }}
+      >
         <Typography view="body">04.05.25</Typography>
         <Typography view="heading1">Орест</Typography>
         <Typography view="body">&</Typography>

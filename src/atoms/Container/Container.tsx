@@ -2,7 +2,6 @@ import ArrowLeftMobile from '@/assets/images/arrow-left-mobile.svg?react';
 import ArrowLeftDesktop from '@/assets/images/arrow-left.svg?react';
 import ArrowRightMobile from '@/assets/images/arrow-right-mobile.svg?react';
 import ArrowRightDesktop from '@/assets/images/arrow-right.svg?react';
-import Bg from '@/assets/images/bg.png';
 import Bow from '@/assets/images/bow.svg?react';
 import Divider from '@/assets/images/devider.svg?react';
 import { SvgIcon } from '@/components/Icon/SvgIcon';
@@ -15,7 +14,6 @@ interface ContainerProps {
   className?: string;
   isLeftArrow?: boolean;
   onArrowClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  withBg?: boolean;
   withDivider?: boolean;
   childClassname?: string;
   title?: string;
@@ -27,7 +25,6 @@ export const Container = ({
   children,
   className,
   isLeftArrow,
-  withBg = false,
   onArrowClick,
   withDivider = true,
   childClassname,
@@ -43,9 +40,8 @@ export const Container = ({
 
   return (
     <div
-      style={withBg ? { backgroundImage: `url(${Bg})` } : {}}
       className={mergeClassname(
-        'bg-no-repeat bg-center container-item flex-col bg-contain',
+        'bg-center container-item flex-col mb-5',
         'relative h-[100vh] lg:max-w-[768px] w-full flex justify-center items-center',
         className
       )}
@@ -63,8 +59,6 @@ export const Container = ({
           {withBow && (
             <SvgIcon
               Icon={Bow}
-              width={52}
-              height={50}
               className="scale-x-[-1] w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]"
             />
           )}
@@ -85,7 +79,7 @@ export const Container = ({
           <SvgIcon
             className={mergeClassname(
               !isLeftArrow ? 'justify-end' : 'justify-start',
-              'flex w-[50px] h-[50px] lg:w-[90px] lg:h-[90px] '
+              'flex w-[90px] h-[90px] '
             )}
             Icon={isLeftArrow ? ArrowLeft : ArrowRight}
             alt="Arrow"
