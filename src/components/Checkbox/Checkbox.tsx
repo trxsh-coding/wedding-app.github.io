@@ -1,5 +1,5 @@
-import CheckboxIcon from '@/assets/images/checkbox.svg?url';
-import { Icon } from '@/components/Icon/Icon';
+import CheckboxIcon from '@/assets/images/checkbox.svg?react';
+import { SvgIcon } from '@/components/Icon/SvgIcon';
 import { Typography } from '@/components/Typography';
 import mergeClassname from '@/utils/merge';
 
@@ -19,8 +19,8 @@ export const Checkbox = ({ title, value, onChange }: CheckboxProps) => {
           value && 'bg-primary'
         )}
       >
-        <Icon
-          src={CheckboxIcon}
+        <SvgIcon
+          Icon={CheckboxIcon}
           className={mergeClassname(
             'opacity-0 transition-all duration-200',
             value && 'opacity-100'

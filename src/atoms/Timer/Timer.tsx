@@ -1,7 +1,6 @@
 import Rabbits from '@/assets/images/rabbits.gif?url';
 import { Container } from '@/atoms/Container';
 import { Hearth } from '@/components/Hearth/Hearth';
-import { Icon } from '@/components/Icon/Icon';
 import { Typography } from '@/components/Typography';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
@@ -62,7 +61,7 @@ export const Timer = () => {
       </div>
 
       <div className="flex flex-col justify-center items-center">
-        <Icon src={Rabbits} className="max-w-[132px] max-h-[53px]" />
+        <img src={Rabbits} alt="empty" className="max-w-[132px] max-h-[53px]" />
         <Typography view="body">ждем встречи!</Typography>
       </div>
       <div className="flex flex-col justify-center items-center">

@@ -1,4 +1,4 @@
-import HearthSvg from '@/assets/images/hearth.svg?url';
+import HearthSvg from '@/assets/images/hearth.svg?react';
 import { Typography } from '@/components/Typography';
 
 interface HearthProps {

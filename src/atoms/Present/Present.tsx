@@ -1,6 +1,6 @@
-import Letter from '@/assets/images/letter.svg?url';
+import Letter from '@/assets/images/letter.svg?react';
 import { Container } from '@/atoms/Container';
-import { Icon } from '@/components/Icon/Icon';
+import { SvgIcon } from '@/components/Icon';
 import { Typography } from '@/components/Typography';
 
 interface PresentProps {
@@ -18,7 +18,7 @@ export const Present = ({ scrollToNext }: PresentProps) => {
       <Typography view="body">
         Приносите веселье в душе, радость в сердце, а подарки – в конверте!
       </Typography>
-      <Icon src={Letter} />
+      <SvgIcon Icon={Letter} />
     </Container>
   );
 };

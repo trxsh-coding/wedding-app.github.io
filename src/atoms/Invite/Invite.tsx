@@ -1,6 +1,6 @@
-import Bear from '@/assets/images/bear.svg?url';
+import Bear from '@/assets/images/bear.svg?react';
 import { Container } from '@/atoms/Container';
-import { Icon } from '@/components/Icon/Icon';
+import { SvgIcon } from '@/components/Icon';
 import { Typography } from '@/components/Typography';
 import React from 'react';
 
@@ -28,7 +28,10 @@ export const Invite = ({ scrollToNext }: InviteProps) => {
           Наша свадьба без вас не будет такой счастливой, уютной и веселой! Приглашаем отметить этот
           день вместе с нами!
         </Typography>
-        <Icon className="flex justify-center" src={Bear} />
+        <SvgIcon
+          className="flex justify-center w-[106px] h-[132px] lg:w-[95px] lg:h-[76px]"
+          Icon={Bear}
+        />
       </div>
     </Container>
   );

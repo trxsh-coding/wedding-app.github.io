@@ -1,11 +1,11 @@
-import ArrowLeftMobile from '@/assets/images/arrow-left-mobile.svg?url';
-import ArrowLeftDesktop from '@/assets/images/arrow-left.svg?url';
-import ArrowRightMobile from '@/assets/images/arrow-right-mobile.svg?url';
-import ArrowRightDesktop from '@/assets/images/arrow-right.svg?url';
+import ArrowLeftMobile from '@/assets/images/arrow-left-mobile.svg?react';
+import ArrowLeftDesktop from '@/assets/images/arrow-left.svg?react';
+import ArrowRightMobile from '@/assets/images/arrow-right-mobile.svg?react';
+import ArrowRightDesktop from '@/assets/images/arrow-right.svg?react';
 import Bg from '@/assets/images/bg.png';
-import Bow from '@/assets/images/bow.svg?url';
-import Divider from '@/assets/images/devider.svg?url';
-import { Icon } from '@/components/Icon/Icon';
+import Bow from '@/assets/images/bow.svg?react';
+import Divider from '@/assets/images/devider.svg?react';
+import { SvgIcon } from '@/components/Icon/SvgIcon';
 import { Typography } from '@/components/Typography';
 import { useBreakpoints } from '@/hooks/useBreakpoints';
 import mergeClassname from '@/utils/merge';
@@ -52,15 +52,17 @@ export const Container = ({
     >
       <div className="flex flex-col justify-center items-center grow w-full">
         <div className="flex grow-0">
-          {withBow && <Icon src={Bow} className="w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]" />}
+          {withBow && (
+            <SvgIcon Icon={Bow} className="w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]" />
+          )}
           {title && (
             <Typography view="heading" className={mergeClassname(titleClassname, 'uppercase')}>
               {title}
             </Typography>
           )}
           {withBow && (
-            <Icon
-              src={Bow}
+            <SvgIcon
+              Icon={Bow}
               width={52}
               height={50}
               className="scale-x-[-1] w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]"
@@ -80,17 +82,17 @@ export const Container = ({
         )}
       >
         {withArrow && (
-          <Icon
+          <SvgIcon
             className={mergeClassname(
               !isLeftArrow ? 'justify-end' : 'justify-start',
               'flex w-[50px] h-[50px] lg:w-[90px] lg:h-[90px] '
             )}
-            src={isLeftArrow ? ArrowLeft : ArrowRight}
+            Icon={isLeftArrow ? ArrowLeft : ArrowRight}
             alt="Arrow"
             onClick={onArrowClick}
           />
         )}
-        {withDivider && <Icon src={Divider} className="flex justify-center lg:!h-max-[72px]" />}
+        {withDivider && <SvgIcon Icon={Divider} className="flex justify-center lg:!h-max-[72px]" />}
       </div>
     </div>
   );

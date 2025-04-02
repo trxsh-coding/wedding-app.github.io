@@ -1,23 +1,22 @@
 interface SvgImageProps {
-  src: string;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>; // Тип для SVG-компонента
   alt?: string;
   width?: number | string;
   height?: number | string;
-  IconClassName?: string;
+  iconClassName?: string;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Icon = ({
-  src,
-  alt,
+export const SvgIcon = ({
   height,
   width,
   className,
-  IconClassName,
+  iconClassName,
   onClick,
+  Icon,
 }: SvgImageProps) => (
   <div onClick={onClick} className={className}>
-    <img src={src} alt={alt} width={width} height={height} className={IconClassName} />
+    <Icon className={iconClassName} width={width} height={height} />
   </div>
 );
