@@ -15,6 +15,13 @@ body {
   text-transform: uppercase;
 }
 
+svg {
+  -webkit-transform: translateZ(0); /* Форсирует чёткость */
+  transform: translateZ(0);
+  -webkit-font-smoothing: antialiased; /* Улучшает рендеринг */
+  shape-rendering: crispEdges; /* Чёткие края для геометрических фигур */
+}
+
 @theme {
   --color-primary: #EFD4D8;
   --color-secondary: #C06576;
