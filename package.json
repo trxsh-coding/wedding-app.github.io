@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://trxsh-coding.github.io/wedding-app",
+  "homepage": "https://trxsh-coding.github.io/wedding-app.github.io",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
