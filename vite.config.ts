@@ -8,7 +8,15 @@ const root = path.resolve(__dirname, 'src');
 const atoms = path.resolve(__dirname, 'src/atoms');
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), svgr()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    svgr({
+      svgrOptions: {
+        svgo: false,
+      },
+    }),
+  ],
   build: {
     emptyOutDir: true,
     rollupOptions: {
