@@ -59,7 +59,12 @@ export const Container = ({
             </Typography>
           )}
           {withBow && (
-            <Icon src={Bow} className="scale-x-[-1] w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]" />
+            <Icon
+              src={Bow}
+              width={52}
+              height={50}
+              className="scale-x-[-1] w-[52px] h-[50px] lg:w-[104px] lg:h-[100px]"
+            />
           )}
         </div>
         <div
