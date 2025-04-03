@@ -47,7 +47,7 @@ export const Container = ({
     <div
       className={mergeClassname(
         'bg-center container-item flex-col',
-        'relative h-[100vh] lg:max-w-[768px] w-full flex justify-center items-center',
+        'relative min-h-screen lg:max-w-[768px] w-full flex justify-center items-center',
         className
       )}
     >

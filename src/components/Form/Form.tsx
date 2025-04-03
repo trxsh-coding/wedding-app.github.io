@@ -25,7 +25,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
   const [attendance, setAttendance] = React.useState<string | null>(null);
   const [transfer, setTransfer] = React.useState<string | null>(null);
   const [kidsInfo, setKidsInfo] = React.useState('');
-  const [withKids, setWithKids] = React.useState(transferOptions[1]);
+  const [withKids, setWithKids] = React.useState('');
 
   const message = React.useMemo(() => {
     return `Присутствие: ${attendance}\nНапитки: ${selectedDrinks.join(', ')}\nТрансфер: ${transfer}\nДети: ${kidsInfo}`;

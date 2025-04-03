@@ -1,4 +1,3 @@
-import Bg from '@/assets/images/bg.webp';
 import { Container } from '@/atoms/Container';
 import { Typography } from '@/components/Typography';
 
@@ -16,10 +15,7 @@ export const Preview = ({ isDesktop, scrollToNext }: PreviewProps) => {
       withDivider={isDesktop}
       onArrowClick={scrollToNext}
     >
-      <div
-        className="bg-contain bg-center h-full w-full bg-no-repeat flex flex-col justify-center items-center"
-        style={{ backgroundImage: `url(${Bg})` }}
-      >
+      <div className="bg-contain bg-center h-full w-full bg-no-repeat flex flex-col justify-center items-center">
         <Typography view="body">04.05.25</Typography>
         <Typography view="heading1">Орест</Typography>
         <Typography view="body">&</Typography>
