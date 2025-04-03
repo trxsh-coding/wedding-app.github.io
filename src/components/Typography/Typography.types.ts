@@ -2,7 +2,7 @@ export type TypographyView = 'heading' | 'body' | 'button' | 'caption' | 'headin
 
 export type TypographyViewsKeys = { [key in TypographyView]: string };
 
-export type TypographyColor = 'primary' | 'secondary' | 'tertiary';
+export type TypographyColor = 'primary' | 'secondary' | 'tertiary' | 'white' | 'inherit';
 
 export type TypographyColorsKeys = { [key in TypographyColor]: string };
 

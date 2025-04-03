@@ -22,7 +22,7 @@ export const Checkbox = ({ title, value, onChange }: CheckboxProps) => {
         <SvgIcon
           Icon={CheckboxIcon}
           className={mergeClassname(
-            'opacity-0 transition-all duration-200',
+            'opacity-0 transition-all duration-200 w-3 h-3 flex items-center justify-center cursor-pointer',
             value && 'opacity-100'
           )}
         />

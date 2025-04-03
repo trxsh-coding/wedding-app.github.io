@@ -1,12 +1,13 @@
 import { Container } from '@/atoms/Container';
+import { FormSent } from '@/atoms/FormSent/FormSent';
 import { Button } from '@/components/Button';
 import { Checkbox } from '@/components/Checkbox';
 import { Input } from '@/components/Input/Input';
 import { Radio } from '@/components/Radio';
 import { Typography } from '@/components/Typography';
 import { useBreakpoints } from '@/hooks/useBreakpoints';
+import { useEmail } from '@/hooks/useEmail';
 import mergeClassname from '@/utils/merge';
-import emailjs from 'emailjs-com';
 import React from 'react';
 
 interface FormProps {
@@ -18,10 +19,6 @@ const attendanceOptions = ['Приду', 'Не смогу прийти'];
 const transferOptions = ['Да', 'Нет'];
 const kidsOptions = ['Да', 'Нет'];
 
-const serviceId = import.meta.env.VITE_EMAIL_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
-const userId = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
-
 export const Form = ({ scrollToNext }: FormProps) => {
   const [name, setName] = React.useState('');
   const [selectedDrinks, setSelectedDrinks] = React.useState<string[]>([]);
@@ -29,6 +26,12 @@ export const Form = ({ scrollToNext }: FormProps) => {
   const [transfer, setTransfer] = React.useState<string | null>(null);
   const [kidsInfo, setKidsInfo] = React.useState('');
   const [withKids, setWithKids] = React.useState(transferOptions[1]);
+
+  const message = React.useMemo(() => {
+    return `Присутствие: ${attendance}\nНапитки: ${selectedDrinks.join(', ')}\nТрансфер: ${transfer}\nДети: ${kidsInfo}`;
+  }, [attendance, kidsInfo, selectedDrinks, transfer]);
+
+  const { handleEmailSubmit, isFetched, isFetching } = useEmail({ message, name });
 
   const { isDesktop } = useBreakpoints();
 
@@ -45,24 +48,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
     </div>
   );
 
-  const handleEmailSubmit = () => {
-    const templateParams = {
-      name: name, // Имя пользователя
-      message: `Присутствие: ${attendance}\nНапитки: ${selectedDrinks.join(', ')}\nТрансфер: ${transfer}\nДети: ${kidsInfo}`,
-      title: 'Свадьба: Подтверждение',
-    };
-
-    emailjs
-      .send(serviceId, templateId, templateParams, userId)
-      .then(() => {
-        console.log('Sending...');
-      })
-      .catch((error: string) => {
-        console.error('Ошибка отправки:', error);
-      });
-  };
-
-  return (
+  return !isFetched ? (
     <Container
       isLeftArrow
       onArrowClick={scrollToNext}
@@ -135,7 +121,9 @@ export const Form = ({ scrollToNext }: FormProps) => {
           <Input placeholder="Возраст детей" value={kidsInfo} onChange={setKidsInfo} />
         </div>
       </div>
-      <Button title="Отправить" onClick={handleEmailSubmit} />
+      <Button loading={isFetching} title="Отправить" onClick={handleEmailSubmit} />
     </Container>
+  ) : (
+    <FormSent scrollToNext={scrollToNext} />
   );
 };

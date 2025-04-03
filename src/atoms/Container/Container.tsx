@@ -21,6 +21,8 @@ interface ContainerProps {
   titleClassname?: string;
   withBow?: boolean;
   withArrow?: boolean;
+  viewport?: number | 'some' | 'all';
+  disableInView?: boolean;
 }
 export const Container = ({
   children,
@@ -33,6 +35,8 @@ export const Container = ({
   withBow,
   withArrow = true,
   titleClassname,
+  disableInView = false,
+  viewport = 0.3,
 }: ContainerProps) => {
   const { isDesktopStrict } = useBreakpoints();
 
@@ -42,7 +46,7 @@ export const Container = ({
   return (
     <div
       className={mergeClassname(
-        'bg-center container-item flex-col mb-5',
+        'bg-center container-item flex-col',
         'relative h-[100vh] lg:max-w-[768px] w-full flex justify-center items-center',
         className
       )}
@@ -50,9 +54,14 @@ export const Container = ({
       <motion.div
         className="flex flex-col justify-center items-center grow w-full"
         initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        {...(disableInView
+          ? { animate: { opacity: 1, y: 0 } }
+          : {
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true, amount: viewport },
+            })}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: viewport }}
       >
         <div className="flex grow-0">
           {withBow && (

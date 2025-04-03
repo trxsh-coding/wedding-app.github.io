@@ -14,6 +14,16 @@ function App() {
   const mainRef = React.useRef<HTMLDivElement>(null);
 
   const { isDesktopXl } = useBreakpoints();
+  const [playing, setPlaying] = React.useState(false);
+
+  const onPlayerClick = React.useCallback(() => {
+    setPlaying(!playing);
+  }, [playing]);
+
+  // const onOverlayClick = React.useCallback(() => {
+  //   setPlaying(true);
+  //   setOverlayed(false);
+  // }, []);
 
   const scrollToNext = (event: React.MouseEvent<HTMLDivElement>) => {
     const currentDiv = (event.target as HTMLElement).closest('.container-item'); // Ищем ближайший контейнер
@@ -46,7 +56,7 @@ function App() {
       <Present scrollToNext={scrollToNext} />
       <Form scrollToNext={scrollToNext} />
       <Timer />
-      <MusicPlayer />
+      <MusicPlayer triggerPlay={playing} onClick={onPlayerClick} />
     </div>
   );
 }

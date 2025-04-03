@@ -4,11 +4,26 @@ import WeddingSong from '@/assets/music/song.mp3';
 import { SvgIcon } from '@/components/Icon';
 import React from 'react';
 
-export const MusicPlayer = () => {
+export const MusicPlayer = ({
+  triggerPlay = false,
+}: {
+  triggerPlay: boolean;
+  onClick: VoidFunction;
+}) => {
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  const [playing, setPlaying] = React.useState(true);
+  const [playing, setPlaying] = React.useState(triggerPlay);
 
-  const togglePlayback = () => {
+  React.useEffect(() => {
+    if (audioRef.current) {
+      if (playing) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [playing, triggerPlay]);
+
+  const togglePlayback = React.useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
@@ -21,8 +36,7 @@ export const MusicPlayer = () => {
     }
 
     setPlaying(!playing);
-  };
-
+  }, [playing]);
   return (
     <>
       <SvgIcon
@@ -31,7 +45,7 @@ export const MusicPlayer = () => {
         iconClassName="w-6 h-6"
         onClick={togglePlayback}
       />
-      <audio ref={audioRef} src={WeddingSong} loop />
+      <audio ref={audioRef} src={WeddingSong} />
     </>
   );
 };

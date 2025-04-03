@@ -24,6 +24,8 @@ const colors: TypographyColorsKeys = {
   primary: 'text-text',
   secondary: 'text-textSecondary',
   tertiary: 'text-textTertiary',
+  white: 'text-white',
+  inherit: 'inherit',
 };
 
 const views: TypographyViewsKeys = {
