@@ -17,7 +17,7 @@ export const Timing = ({ scrollToNext }: TimingProps) => {
       onArrowClick={scrollToNext}
     >
       <EventItem
-        iconClassName="w-[80px] h-[87px] lg:w-[94px] lg:h-[102px]"
+        iconClassName="w-[80px] h-[87px]  xs:w-[94px] xs:h-[102px]"
         title="14:00"
         subtitle="венчание"
         Icon={Ring}
@@ -25,7 +25,7 @@ export const Timing = ({ scrollToNext }: TimingProps) => {
       <EventItem
         title="16:00"
         subtitle="ресторан"
-        iconClassName="w-[80px] h-[64px] lg:w-[203px] lg:h-[164px] '"
+        iconClassName="w-[80px] h-[64px] xs:w-[150px] xs:h-[130px] lg:w-[203px] lg:h-[164px] '"
         Icon={Cake}
       />
     </Container>

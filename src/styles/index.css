@@ -26,8 +26,7 @@ svg {
   --color-primary: #EFD4D8;
   --color-secondary: #C06576;
   --breakpoint-lg: 768px;
-  --breakpoint-xs: 320px;
-  --breakpoint-sm: 480px;
+  --breakpoint-xs: 374px;
   --breakpoint-xl: 1440px;
 
   --text-3xl: 32px;

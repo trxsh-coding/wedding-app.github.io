@@ -103,7 +103,9 @@ export const Container = ({
             onClick={onArrowClick}
           />
         )}
-        {withDivider && <SvgIcon Icon={Divider} className="flex justify-center lg:!h-max-[72px]" />}
+        {withDivider && (
+          <SvgIcon Icon={Divider} className="flex justify-center w-full lg:!h-max-[72px]" />
+        )}
       </div>
     </div>
   );
