@@ -117,8 +117,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
             'transition-all duration-300 ease-linear overflow-hidden'
           )}
         >
-          <Typography view="form">Укажите количество:</Typography>
-          <Input placeholder="Возраст детей" value={kidsInfo} onChange={setKidsInfo} />
+          <Input placeholder="Количество детей" value={kidsInfo} onChange={setKidsInfo} />
         </div>
       </div>
       <Button loading={isFetching} title="Отправить" onClick={handleEmailSubmit} />
