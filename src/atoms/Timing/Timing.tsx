@@ -13,7 +13,7 @@ export const Timing = ({ scrollToNext }: TimingProps) => {
       className="flex lg:gap-9"
       titleClassname="text-center justify-start"
       childClassname="flex-col items-center justify-center"
-      title="Расписание свадебного дня"
+      title="Тайминг"
       onArrowClick={scrollToNext}
     >
       <EventItem

@@ -5,6 +5,7 @@ interface SvgImageProps {
   height?: number | string;
   iconClassName?: string;
   className?: string;
+  children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
@@ -15,8 +16,11 @@ export const SvgIcon = ({
   iconClassName,
   onClick,
   Icon,
+  children,
 }: SvgImageProps) => (
   <div onClick={onClick} className={className}>
-    <Icon className={iconClassName} width={width} height={height} />
+    <Icon className={iconClassName} width={width} height={height}>
+      {children}
+    </Icon>
   </div>
 );

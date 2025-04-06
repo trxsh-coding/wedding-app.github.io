@@ -33,8 +33,7 @@ export const Button = ({
       onClick={onClickHandler}
       className={mergeClassname(
         'border-secondary border-solid cursor-pointer border-2 rounded-[40px] h-[40px] lg:h-[60px] flex flex-col justify-center items-center w-full w-max-[284px] py-4\n' +
-          'bg-secondary !text-white hover:!text-secondary transition-colors duration-500\n' +
-          'focus:bg-white ',
+          'bg-secondary !text-white hover:!text-secondary transition-colors duration-500\n',
         !loading && 'hover:bg-white hover:text-secondary hover:border-secondary',
         className
       )}

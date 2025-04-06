@@ -92,16 +92,19 @@ export const Container = ({
         )}
       >
         {withArrow && (
-          <SvgIcon
+          <div
             className={mergeClassname(
               !isLeftArrow ? 'justify-end' : 'justify-start',
               'flex w-full'
             )}
-            iconClassName="flex w-[90px] h-[90px]"
-            Icon={isLeftArrow ? ArrowLeft : ArrowRight}
-            alt="Arrow"
-            onClick={onArrowClick}
-          />
+          >
+            <SvgIcon
+              iconClassName="flex w-[90px] h-[90px] pb-4"
+              Icon={isLeftArrow ? ArrowLeft : ArrowRight}
+              alt="Arrow"
+              onClick={onArrowClick}
+            />
+          </div>
         )}
         {withDivider && (
           <SvgIcon Icon={Divider} className="flex justify-center w-full lg:!h-max-[72px]" />

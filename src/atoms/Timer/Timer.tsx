@@ -8,7 +8,7 @@ import React from 'react';
 
 dayjs.extend(duration);
 
-const targetDate = '2025-05-04T12:00:00';
+const targetDate = '2025-05-04T17:00:00';
 
 export const Timer = () => {
   const calculateTimeLeft = () => {
@@ -22,7 +22,7 @@ export const Timer = () => {
 
     const d = dayjs.duration(diff);
     return {
-      days: d.days() + d.weeks() * 7,
+      days: d.days(),
       hours: d.hours(),
       minutes: d.minutes(),
       seconds: d.seconds(),

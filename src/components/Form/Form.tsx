@@ -14,32 +14,79 @@ interface FormProps {
   scrollToNext: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const drinksList = ['Игристое вино', 'Белое вино', 'Красное вино', 'Водка', 'Виски/Ром', 'Коньяк'];
-const attendanceOptions = ['Приду', 'Не смогу прийти'];
+const drinksList = [
+  'Игристое вино',
+  'Белое вино',
+  'Красное вино',
+  'Водка',
+  'Безалкогольные напитки',
+  'Другое (уточните, что бы хотелось)',
+];
+const attendanceOptions = ['Да, приду', 'Нет, не смогу прийти'];
 const transferOptions = ['Да', 'Нет'];
 const kidsOptions = ['Да', 'Нет'];
+type ErrorFields = keyof typeof errorState;
+
+const errorState = {
+  name: false,
+  withKids: false,
+};
 
 export const Form = ({ scrollToNext }: FormProps) => {
   const [name, setName] = React.useState('');
   const [selectedDrinks, setSelectedDrinks] = React.useState<string[]>([]);
   const [attendance, setAttendance] = React.useState<string | null>(null);
   const [transfer, setTransfer] = React.useState<string | null>(null);
+  const [additionalDrinks, setAdditionalDrinks] = React.useState<string>('');
+
   const [kidsInfo, setKidsInfo] = React.useState('');
   const [withKids, setWithKids] = React.useState('');
 
-  const message = React.useMemo(() => {
-    return `Присутствие: ${attendance}\nНапитки: ${selectedDrinks.join(', ')}\nТрансфер: ${transfer}\nДети: ${kidsInfo}`;
-  }, [attendance, kidsInfo, selectedDrinks, transfer]);
+  const [error, setError] = React.useState<{
+    name: boolean;
+    withKids: boolean;
+  }>(errorState);
 
-  const { handleEmailSubmit, isFetched, isFetching } = useEmail({ message, name });
+  const message = React.useMemo(() => {
+    return `Присутствие: ${attendance}\nНапитки: ${selectedDrinks.join(', ')}\n${additionalDrinks ?? ''}\nТрансфер: ${transfer}\nДети: ${kidsInfo}`;
+  }, [additionalDrinks, attendance, kidsInfo, selectedDrinks, transfer]);
 
   const { isDesktop } = useBreakpoints();
 
-  const handleCheckboxChange = (drink: string) => {
-    setSelectedDrinks((prev) =>
-      prev.includes(drink) ? prev.filter((item) => item !== drink) : [...prev, drink]
-    );
-  };
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const firstName = params.get('first');
+    const secondName = params.get('second');
+    setName(`${firstName} ${secondName ? 'и ' + secondName : ''}`);
+  }, []);
+
+  const setValidationError = React.useCallback((name: string) => {
+    return !name.length;
+  }, []);
+
+  const isValid = React.useMemo(() => {
+    return (Object.keys(error) as ErrorFields[]).every((key) => {
+      return !error[key];
+    });
+  }, [error]);
+
+  const { handleEmailSubmit, isFetched, isFetching } = useEmail({ message, name, valid: isValid });
+
+  React.useEffect(() => {
+    setError({
+      name: setValidationError(name),
+      withKids: setValidationError(kidsInfo) && withKids === kidsOptions[0],
+    });
+  }, [kidsInfo, name, setValidationError, withKids]);
+  console.log(error);
+  const handleCheckboxChange = React.useCallback(
+    (drink: string) => {
+      setSelectedDrinks((prev) =>
+        prev.includes(drink) ? prev.filter((item) => item !== drink) : [...prev, drink]
+      );
+    },
+    [setSelectedDrinks]
+  );
 
   const FormWrapper = ({ children, caption }: { children: React.ReactNode; caption: string }) => (
     <div className="flex flex-col lg:gap-2">
@@ -60,7 +107,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
     >
       <div className="p-2.5 gap-2 w-full flex flex-col lg:px-[32px] lg:py-2 lg:gap-3.5 rounded-[20px] bg-white border-solid border-black border">
         {/* Имя */}
-        <Input placeholder="Имя и фамилия" value={name} onChange={setName} />
+        <Input error={error.name} placeholder="Имя и фамилия" value={name} onChange={setName} />
 
         {/* Присутствие */}
         <FormWrapper caption="Подтвердите, пожалуйста, ваше присутствие:">
@@ -85,7 +132,9 @@ export const Form = ({ scrollToNext }: FormProps) => {
             />
           ))}
         </FormWrapper>
-
+        {selectedDrinks.includes(drinksList[drinksList.length - 1]) && (
+          <Input placeholder="Пожелания" value={additionalDrinks} onChange={setAdditionalDrinks} />
+        )}
         {/* Трансфер (Radio) */}
         <FormWrapper caption="Вам нужен трансфер?">
           {transferOptions.map((option) => (
@@ -117,10 +166,20 @@ export const Form = ({ scrollToNext }: FormProps) => {
             'transition-all duration-300 ease-linear overflow-hidden'
           )}
         >
-          <Input placeholder="Количество детей" value={kidsInfo} onChange={setKidsInfo} />
+          <Input
+            error={error.withKids}
+            placeholder="Количество детей"
+            value={kidsInfo}
+            onChange={setKidsInfo}
+          />
         </div>
       </div>
       <Button loading={isFetching} title="Отправить" onClick={handleEmailSubmit} />
+      {!isValid && (
+        <Typography view="caption" className="!text-red-600">
+          проверьте, всё ли заполнено 💌
+        </Typography>
+      )}
     </Container>
   ) : (
     <FormSent scrollToNext={scrollToNext} />
