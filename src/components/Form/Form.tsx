@@ -78,7 +78,7 @@ export const Form = ({ scrollToNext }: FormProps) => {
       withKids: setValidationError(kidsInfo) && withKids === kidsOptions[0],
     });
   }, [kidsInfo, name, setValidationError, withKids]);
-  console.log(error);
+
   const handleCheckboxChange = React.useCallback(
     (drink: string) => {
       setSelectedDrinks((prev) =>

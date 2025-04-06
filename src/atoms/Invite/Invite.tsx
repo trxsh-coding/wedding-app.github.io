@@ -30,15 +30,17 @@ export const Invite = ({ scrollToNext }: InviteProps) => {
   const dearText = React.useMemo(() => {
     const params = new URLSearchParams(window.location.search);
 
+    if (firstGuest && secondGuest) {
+      return 'Дорогие';
+    }
+
     if (firstGuest && params.get('male') === 'male') {
       return 'Дорогой';
     }
     if (firstGuest && params.get('male') === 'female') {
       return 'Дорогая';
     }
-
-    return 'Дорогие';
-  }, [firstGuest]);
+  }, [firstGuest, secondGuest]);
 
   const title: React.ReactNode = React.useMemo(() => {
     if (firstGuest && secondGuest) {
