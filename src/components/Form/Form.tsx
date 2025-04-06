@@ -57,7 +57,9 @@ export const Form = ({ scrollToNext }: FormProps) => {
     const params = new URLSearchParams(window.location.search);
     const firstName = params.get('first');
     const secondName = params.get('second');
-    setName(`${firstName} ${secondName ? 'и ' + secondName : ''}`);
+    if (firstName || secondName) {
+      setName(`${firstName} ${secondName ? 'и ' + secondName : ''}`);
+    }
   }, []);
 
   const setValidationError = React.useCallback((name: string) => {

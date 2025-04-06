@@ -40,6 +40,8 @@ export const Invite = ({ scrollToNext }: InviteProps) => {
     if (firstGuest && params.get('male') === 'female') {
       return 'Дорогая';
     }
+
+    return 'Дорогой(ая)';
   }, [firstGuest, secondGuest]);
 
   const title: React.ReactNode = React.useMemo(() => {
