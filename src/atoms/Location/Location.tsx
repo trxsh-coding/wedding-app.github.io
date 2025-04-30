@@ -1,5 +1,5 @@
 import Bank from '@/assets/images/dachny.jpeg?url';
-import Kolupanovo from '@/assets/images/kolupan.jpeg?url';
+import Fomishevo from '@/assets/images/fomishevo.webp?url';
 import { Container } from '@/atoms/Container';
 import { Button } from '@/components/Button';
 import { Pic } from '@/components/Pic/Pic';
@@ -23,15 +23,15 @@ export const Location = ({ scrollToNext }: LocationProps) => {
     >
       <div className="max-w-[550px] gap-2 lg:gap-[25px] flex flex-col items-center shrink">
         <Typography view="body" className="text-pretty">
-          венчание пройдет в церкви троицы живоначальной в Колюпаново
+          венчание пройдет в церкви Николая Чудотворца в Фомищево
         </Typography>
         <Pic
-          src={Kolupanovo}
+          src={Fomishevo}
           className="rounded-[20px] overflow-hidden w-[115px] h-[77px] lg:w-[198px] lg:h-[132px]"
         />
         <Button
           Element="a"
-          href={links.kolupanovo}
+          href={links.fomishevo}
           title="Маршрут"
           className="max-w-[174px] lg:max-w-[274px]"
         />
